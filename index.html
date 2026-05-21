@@ -772,7 +772,15 @@
       }
       requestAnimationFrame(rampDown);
 
-      setRotation(0);
+      // IMPORTANT for iOS WebKit (Safari, Chrome iOS):
+      // If we set transform back to 0 in the same synchronous tick where we added
+      // the 'returning' class, WebKit coalesces the changes and skips the transition.
+      // Fix: force a reflow + defer the transform change to the next animation frame.
+      void dial.offsetHeight;  // forces synchronous reflow so transition is active
+      requestAnimationFrame(() => {
+        setRotation(0);
+      });
+
       if (register && activeDigit !== null) {
         composedNumber += activeDigit.toString();
         updateNumberDisplay();
