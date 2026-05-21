@@ -1,833 +1,872 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Nostalgia Phone</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Nostalgia Phone</title>
 
-<!-- PWA meta -->
-<meta name="theme-color" content="#6a635a">
-<meta name="description" content="Compose un numero come negli anni '80. Ghiera rotante con suoni autentici.">
+  <!-- PWA meta -->
+  <meta name="theme-color" content="#6a635a">
+  <meta name="description" content="Componi un numero come negli anni '80. Ghiera rotante con suoni autentici.">
 
-<!-- iOS specific -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Nostalgia Phone">
+  <!-- iOS specific -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nostalgia Phone">
 
-<!-- Manifest inline (base64 of JSON) -->
-<link rel="manifest" href='data:application/manifest+json;charset=utf-8,{"name":"Nostalgia Phone","short_name":"Nostalgia","description":"Compose un numero come negli anni 80","start_url":"./","display":"standalone","orientation":"portrait","background_color":"#6a635a","theme_color":"#6a635a","icons":[{"src":"data:image/svg%2Bxml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect width=%22512%22 height=%22512%22 fill=%22%23b8a890%22/%3E%3Ccircle cx=%22256%22 cy=%22256%22 r=%22200%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22256%22 cy=%22256%22 r=%22200%22 fill=%22%23d4c8b0%22 mask=%22url(%23m)%22/%3E%3Cdefs%3E%3Cmask id=%22m%22%3E%3Crect width=%22512%22 height=%22512%22 fill=%22white%22/%3E%3Ccircle cx=%22340%22 cy=%22148%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22398%22 cy=%22198%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22420%22 cy=%22268%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22398%22 cy=%22338%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22340%22 cy=%22388%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22256%22 cy=%22406%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22172%22 cy=%22388%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22114%22 cy=%22338%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%2292%22 cy=%22268%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22114%22 cy=%22198%22 r=%2230%22 fill=%22black%22/%3E%3C/mask%3E%3C/defs%3E%3Ccircle cx=%22256%22 cy=%22256%22 r=%2275%22 fill=%22%23b8b2a8%22/%3E%3Ccircle cx=%22256%22 cy=%22256%22 r=%2240%22 fill=%22%236a635a%22/%3E%3C/svg%3E","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]}'>
+  <!-- Manifest inline (base64 of JSON) -->
+  <link rel="manifest"
+    href='data:application/manifest+json;charset=utf-8,{"name":"Nostalgia Phone","short_name":"Nostalgia","description":"Compose un numero come negli anni 80","start_url":"./","display":"standalone","orientation":"portrait","background_color":"#6a635a","theme_color":"#6a635a","icons":[{"src":"data:image/svg%2Bxml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect width=%22512%22 height=%22512%22 fill=%22%23b8a890%22/%3E%3Ccircle cx=%22256%22 cy=%22256%22 r=%22200%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22256%22 cy=%22256%22 r=%22200%22 fill=%22%23d4c8b0%22 mask=%22url(%23m)%22/%3E%3Cdefs%3E%3Cmask id=%22m%22%3E%3Crect width=%22512%22 height=%22512%22 fill=%22white%22/%3E%3Ccircle cx=%22340%22 cy=%22148%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22398%22 cy=%22198%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22420%22 cy=%22268%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22398%22 cy=%22338%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22340%22 cy=%22388%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22256%22 cy=%22406%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22172%22 cy=%22388%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22114%22 cy=%22338%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%2292%22 cy=%22268%22 r=%2230%22 fill=%22black%22/%3E%3Ccircle cx=%22114%22 cy=%22198%22 r=%2230%22 fill=%22black%22/%3E%3C/mask%3E%3C/defs%3E%3Ccircle cx=%22256%22 cy=%22256%22 r=%2275%22 fill=%22%23b8b2a8%22/%3E%3Ccircle cx=%22256%22 cy=%22256%22 r=%2240%22 fill=%22%236a635a%22/%3E%3C/svg%3E","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]}'>
 
-<!-- Touch icon for iOS home screen (SVG) -->
-<link rel="apple-touch-icon" href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22%23b8a890%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%22200%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22340%22%20cy%3D%22148%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22398%22%20cy%3D%22198%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%22268%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22398%22%20cy%3D%22338%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22340%22%20cy%3D%22388%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22406%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22172%22%20cy%3D%22388%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22114%22%20cy%3D%22338%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%22268%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22114%22%20cy%3D%22198%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2275%22%20fill%3D%22%23b8b2a8%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2240%22%20fill%3D%22%236a635a%22/%3E%3C/svg%3E">
+  <!-- Touch icon for iOS home screen (SVG) -->
+  <link rel="apple-touch-icon"
+    href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22%23b8a890%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%22200%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22340%22%20cy%3D%22148%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22398%22%20cy%3D%22198%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%22268%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22398%22%20cy%3D%22338%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22340%22%20cy%3D%22388%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22406%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22172%22%20cy%3D%22388%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22114%22%20cy%3D%22338%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%22268%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22114%22%20cy%3D%22198%22%20r%3D%2228%22%20fill%3D%22none%22%20stroke%3D%22%231a1612%22%20stroke-width%3D%226%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2275%22%20fill%3D%22%23b8b2a8%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2240%22%20fill%3D%22%236a635a%22/%3E%3C/svg%3E">
 
-<!-- Favicon (small icon for browser tab) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22%23b8a890%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%22200%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2275%22%20fill%3D%22%23b8b2a8%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2240%22%20fill%3D%22%236a635a%22/%3E%3C/svg%3E">
+  <!-- Favicon (small icon for browser tab) -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22%23b8a890%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%22200%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2275%22%20fill%3D%22%23b8b2a8%22/%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%2240%22%20fill%3D%22%236a635a%22/%3E%3C/svg%3E">
 
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html, body { overflow: hidden; height: 100%; touch-action: none; }
-  :root {
-    /* Phone size: limited by viewport WIDTH and HEIGHT (minus space for
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      overflow: hidden;
+      height: 100%;
+      touch-action: none;
+    }
+
+    :root {
+      /* Phone size: limited by viewport WIDTH and HEIGHT (minus space for
        cradle + label row on top). This keeps the dial circular always.
        Cradle ≈ 18% of --ph, label row ≈ 11% of --ph, plus gaps ≈ 8% of --ph.
        So we need vertical room of about --ph + 37% of --ph = 1.37 * --ph.
        Hence: --ph = min(95vw, 95vh / 1.37, 600px) ≈ min(95vw, 69vh, 600px). */
-    --ph: min(95vw, 69vh, 600px);
-  }
+      --ph: min(95vw, 69vh, 600px);
+    }
 
-  body {
-    background: radial-gradient(ellipse at 30% 20%, #b8a890 0%, #6a635a 100%);
-    color: #e8dcc4;
-    font-family: monospace;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    gap: calc(var(--ph) * 0.04);
-    padding: calc(var(--ph) * 0.04);
-  }
+    body {
+      background: radial-gradient(ellipse at 30% 20%, #b8a890 0%, #6a635a 100%);
+      color: #e8dcc4;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: calc(var(--ph) * 0.04);
+      padding: calc(var(--ph) * 0.04);
+    }
 
-  .number-label {
-    flex: 1;
-    height: calc(var(--ph) * 0.11);
-    background: linear-gradient(180deg, #fbfaf5 0%, #ece8db 100%);
-    border-radius: 2px;
-    border: 1px solid #8a8378;
-    box-shadow:
-      inset 0 1px 3px rgba(0,0,0,0.25),
-      inset 0 -1px 1px rgba(255,255,255,0.6),
-      0 2px 4px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 calc(var(--ph) * 0.045);
-    position: relative;
-    overflow: hidden;
-  }
+    .number-label {
+      flex: 1;
+      height: calc(var(--ph) * 0.11);
+      background: linear-gradient(180deg, #fbfaf5 0%, #ece8db 100%);
+      border-radius: 2px;
+      border: 1px solid #8a8378;
+      box-shadow:
+        inset 0 1px 3px rgba(0, 0, 0, 0.25),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 calc(var(--ph) * 0.045);
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* Cradle / hook switch on top — clears the number when tapped */
-  .cradle {
-    width: calc(var(--ph) * 0.55);
-    height: calc(var(--ph) * 0.18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.12s ease-out;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .cradle svg { width: 100%; height: 100%; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4)); }
-  .cradle.pressed { transform: translateY(4px) scaleY(0.85); }
+    /* Cradle / hook switch on top — clears the number when tapped */
+    .cradle {
+      width: calc(var(--ph) * 0.55);
+      height: calc(var(--ph) * 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.12s ease-out;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-  /* Top row with label + call button */
-  .top-row {
-    width: var(--ph);
-    display: flex;
-    gap: calc(var(--ph) * 0.025);
-    align-items: stretch;
-  }
+    .cradle svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
+    }
 
-  /* Call button — vintage green enamel with modern phone icon */
-  .call-btn {
-    width: calc(var(--ph) * 0.14);
-    height: calc(var(--ph) * 0.11);
-    border: 1px solid #8a8378;
-    border-radius: 2px;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.35),
-      inset 0 -2px 4px rgba(0,0,0,0.3),
-      0 2px 4px rgba(0,0,0,0.4);
-    transition: filter 0.18s, transform 0.08s;
-    -webkit-tap-highlight-color: transparent;
-    background: radial-gradient(circle at 30% 25%, #3d7a4a 0%, #1f5e2c 60%, #0e3a18 100%);
-    color: #fbfaf5;
-  }
-  .call-btn svg {
-    width: calc(var(--ph) * 0.06);
-    height: calc(var(--ph) * 0.06);
-    display: block;
-  }
-  .call-btn:active:not(:disabled) { transform: translateY(1px); filter: brightness(1.1); }
-  .call-btn:disabled {
-    background: radial-gradient(circle at 30% 25%, #7a7268 0%, #5a534a 60%, #3a352e 100%);
-    color: rgba(255,255,255,0.4);
-    cursor: not-allowed;
-  }
+    .cradle.pressed {
+      transform: translateY(4px) scaleY(0.85);
+    }
 
-  /* small metallic clips on the sides (like the real plastic label holder) */
-  .number-label::before,
-  .number-label::after {
-    content: '';
-    position: absolute;
-    top: 4px;
-    bottom: 4px;
-    width: 5px;
-    background: linear-gradient(180deg, #d0c8b8 0%, #908878 100%);
-    border-radius: 1px;
-    box-shadow: inset 0 1px 1px rgba(255,255,255,0.5);
-  }
-  .number-label::before { left: 4px; }
-  .number-label::after  { right: 4px; }
+    /* Top row with label + call button */
+    .top-row {
+      width: var(--ph);
+      display: flex;
+      gap: calc(var(--ph) * 0.025);
+      align-items: stretch;
+    }
 
-  .number-label .text {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: calc(var(--ph) * 0.055);
-    letter-spacing: 0.15em;
-    color: #2a2520;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: clip;
-  }
+    /* Call button — vintage green enamel with modern phone icon */
+    .call-btn {
+      width: calc(var(--ph) * 0.14);
+      height: calc(var(--ph) * 0.11);
+      border: 1px solid #8a8378;
+      border-radius: 2px;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.4);
+      transition: filter 0.18s, transform 0.08s;
+      -webkit-tap-highlight-color: transparent;
+      background: radial-gradient(circle at 30% 25%, #3d7a4a 0%, #1f5e2c 60%, #0e3a18 100%);
+      color: #fbfaf5;
+    }
 
-  /* Phone container — proportional to viewport */
-  .phone {
-    position: relative;
-    width: var(--ph);
-    height: var(--ph);
-  }
+    .call-btn svg {
+      width: calc(var(--ph) * 0.06);
+      height: calc(var(--ph) * 0.06);
+      display: block;
+    }
 
-  /* Fixed WHITE disc with the BIG numbers printed on it */
-  .fixed-disc {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: #ffffff;
-    box-shadow: inset 0 6px 16px rgba(0,0,0,0.15), 0 8px 24px rgba(0,0,0,0.5);
-  }
+    .call-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      filter: brightness(1.1);
+    }
 
-  /* Big numbers on the fixed disc (visible through the holes) */
-  .big-num {
-    position: absolute;
-    width: calc(var(--ph) * 0.13);
-    height: calc(var(--ph) * 0.13);
-    margin: calc(var(--ph) * -0.065) 0 0 calc(var(--ph) * -0.065);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: calc(var(--ph) * 0.085);
-    font-weight: 800;
-    color: #1a1612;
-    pointer-events: none;
-    user-select: none;
-  }
+    .call-btn:disabled {
+      background: radial-gradient(circle at 30% 25%, #7a7268 0%, #5a534a 60%, #3a352e 100%);
+      color: rgba(255, 255, 255, 0.4);
+      cursor: not-allowed;
+    }
 
-  /* Rotating disc on TOP - dark plastic with 10 circular holes cut through */
-  .dial {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    will-change: transform;
-  }
+    /* small metallic clips on the sides (like the real plastic label holder) */
+    .number-label::before,
+    .number-label::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      width: 5px;
+      background: linear-gradient(180deg, #d0c8b8 0%, #908878 100%);
+      border-radius: 1px;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    }
 
-  .dial.returning {
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+    .number-label::before {
+      left: 4px;
+    }
 
-  /* Each "hole" is actually transparent; the visible dial material is between holes */
-  .hole {
-    position: absolute;
-    width: calc(var(--ph) * 0.13);
-    height: calc(var(--ph) * 0.13);
-    margin: calc(var(--ph) * -0.065) 0 0 calc(var(--ph) * -0.065);
-    border-radius: 50%;
-    background: transparent;
-    box-shadow:
-      inset 0 calc(var(--ph) * 0.011) calc(var(--ph) * 0.022) rgba(0,0,0,0.5),
-      inset 0 calc(var(--ph) * -0.005) calc(var(--ph) * 0.011) rgba(255,255,255,0.15),
-      0 0 0 calc(var(--ph) * 0.008) rgba(60, 50, 40, 0.9);
-    user-select: none;
-    pointer-events: auto;
-    cursor: grab;
-  }
+    .number-label::after {
+      right: 4px;
+    }
 
-  .hole:active { cursor: grabbing; }
+    .number-label .text {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: calc(var(--ph) * 0.055);
+      letter-spacing: 0.15em;
+      color: #2a2520;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+    }
 
-  /* Finger stop - fixed to the phone, NOT inside the rotating dial */
-  .finger-stop {
-    position: absolute;
-    width: calc(var(--ph) * 0.045);
-    height: calc(var(--ph) * 0.11);
-    margin: calc(var(--ph) * -0.055) 0 0 calc(var(--ph) * -0.0225);
-    background: linear-gradient(180deg, #d8d2c4 0%, #a8a098 50%, #6a635a 100%);
-    border-radius: calc(var(--ph) * 0.008);
-    box-shadow:
-      inset 0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.008) rgba(255,255,255,0.6),
-      inset 0 calc(var(--ph) * -0.005) calc(var(--ph) * 0.008) rgba(0,0,0,0.4),
-      calc(var(--ph) * 0.005) calc(var(--ph) * 0.005) calc(var(--ph) * 0.016) rgba(0,0,0,0.5);
-    z-index: 10;
-    pointer-events: none;
-  }
+    /* Phone container — proportional to viewport */
+    .phone {
+      position: relative;
+      width: var(--ph);
+      height: var(--ph);
+    }
 
-  /* Fixed inner grey disc — sits above the rotating beige dial, below the center cap */
-  .inner-disc {
-    position: absolute;
-    width: 48%;
-    height: 48%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #d8d4cc 0%, #b8b2a8 70%, #908a80 100%);
-    box-shadow:
-      inset 0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.011) rgba(255,255,255,0.4),
-      inset 0 calc(var(--ph) * -0.008) calc(var(--ph) * 0.016) rgba(0,0,0,0.2),
-      0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.011) rgba(0,0,0,0.25);
-    z-index: 5;
-    pointer-events: none;
-  }
+    /* Fixed WHITE disc with the BIG numbers printed on it */
+    .fixed-disc {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: inset 0 6px 16px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
 
-  /* Center cap */
-  .center-cap {
-    position: absolute;
-    width: calc(var(--ph) * 0.155);
-    height: calc(var(--ph) * 0.155);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #b8a890 0%, #6a635a 100%);
-    box-shadow: inset 0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.011) rgba(255,255,255,0.3), 0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.016) rgba(0,0,0,0.5);
-    z-index: 12;
-    pointer-events: none;
-  }
+    /* Big numbers on the fixed disc (visible through the holes) */
+    .big-num {
+      position: absolute;
+      width: calc(var(--ph) * 0.13);
+      height: calc(var(--ph) * 0.13);
+      margin: calc(var(--ph) * -0.065) 0 0 calc(var(--ph) * -0.065);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: calc(var(--ph) * 0.085);
+      font-weight: 800;
+      color: #1a1612;
+      pointer-events: none;
+      user-select: none;
+    }
 
-  .debug {
-    font-size: 11px;
-    opacity: 0.5;
-    text-align: center;
-  }
-</style>
+    /* Rotating disc on TOP - dark plastic with 10 circular holes cut through */
+    .dial {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      will-change: transform;
+    }
+
+    .dial.returning {
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Each "hole" is actually transparent; the visible dial material is between holes */
+    .hole {
+      position: absolute;
+      width: calc(var(--ph) * 0.13);
+      height: calc(var(--ph) * 0.13);
+      margin: calc(var(--ph) * -0.065) 0 0 calc(var(--ph) * -0.065);
+      border-radius: 50%;
+      background: transparent;
+      box-shadow:
+        inset 0 calc(var(--ph) * 0.011) calc(var(--ph) * 0.022) rgba(0, 0, 0, 0.5),
+        inset 0 calc(var(--ph) * -0.005) calc(var(--ph) * 0.011) rgba(255, 255, 255, 0.15),
+        0 0 0 calc(var(--ph) * 0.008) rgba(60, 50, 40, 0.9);
+      user-select: none;
+      pointer-events: auto;
+      cursor: grab;
+    }
+
+    .hole:active {
+      cursor: grabbing;
+    }
+
+    /* Finger stop - fixed to the phone, NOT inside the rotating dial */
+    .finger-stop {
+      position: absolute;
+      width: calc(var(--ph) * 0.045);
+      height: calc(var(--ph) * 0.11);
+      margin: calc(var(--ph) * -0.055) 0 0 calc(var(--ph) * -0.0225);
+      background: linear-gradient(180deg, #d8d2c4 0%, #a8a098 50%, #6a635a 100%);
+      border-radius: calc(var(--ph) * 0.008);
+      box-shadow:
+        inset 0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.008) rgba(255, 255, 255, 0.6),
+        inset 0 calc(var(--ph) * -0.005) calc(var(--ph) * 0.008) rgba(0, 0, 0, 0.4),
+        calc(var(--ph) * 0.005) calc(var(--ph) * 0.005) calc(var(--ph) * 0.016) rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Fixed inner grey disc — sits above the rotating beige dial, below the center cap */
+    .inner-disc {
+      position: absolute;
+      width: 48%;
+      height: 48%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #d8d4cc 0%, #b8b2a8 70%, #908a80 100%);
+      box-shadow:
+        inset 0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.011) rgba(255, 255, 255, 0.4),
+        inset 0 calc(var(--ph) * -0.008) calc(var(--ph) * 0.016) rgba(0, 0, 0, 0.2),
+        0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.011) rgba(0, 0, 0, 0.25);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* Center cap */
+    .center-cap {
+      position: absolute;
+      width: calc(var(--ph) * 0.155);
+      height: calc(var(--ph) * 0.155);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #b8a890 0%, #6a635a 100%);
+      box-shadow: inset 0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.011) rgba(255, 255, 255, 0.3), 0 calc(var(--ph) * 0.005) calc(var(--ph) * 0.016) rgba(0, 0, 0, 0.5);
+      z-index: 12;
+      pointer-events: none;
+    }
+
+    .debug {
+      font-size: 11px;
+      opacity: 0.5;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Cradle/hook switch — pressing it clears the number -->
-<div class="cradle" id="cradle" title="Riattacca / cancella">
-  <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M 8,4 Q 8,18 18,22 L 42,22 Q 52,18 52,4"
-          fill="none" stroke="url(#cradleGrad)" stroke-width="14" stroke-linecap="round"
-          vector-effect="non-scaling-stroke"/>
-    <defs>
-      <linearGradient id="cradleGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#d8d2c4"/>
-        <stop offset="50%" stop-color="#a8a098"/>
-        <stop offset="100%" stop-color="#6a635a"/>
-      </linearGradient>
-    </defs>
-  </svg>
-</div>
-
-<!-- Number label + call button row -->
-<div class="top-row">
-  <div class="number-label"><span class="text" id="count"></span></div>
-  <button class="call-btn" id="callBtn" disabled aria-label="Chiama">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path fill="currentColor"
-        d="M19.23 15.26l-2.54-.29a1.5 1.5 0 0 0-1.24.43l-1.84 1.84a14.36 14.36 0 0 1-6.29-6.29l1.85-1.85a1.5 1.5 0 0 0 .43-1.24l-.29-2.52A1.5 1.5 0 0 0 7.81 4H5.03c-.87 0-1.6.73-1.54 1.6.45 6.59 5.72 11.85 12.3 12.3.87.06 1.6-.67 1.6-1.54v-2.78a1.5 1.5 0 0 0-1.16-1.32z"/>
+  <!-- Cradle/hook switch — pressing it clears the number -->
+  <div class="cradle" id="cradle" title="Riattacca / cancella">
+    <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M 8,4 Q 8,18 18,22 L 42,22 Q 52,18 52,4" fill="none" stroke="url(#cradleGrad)" stroke-width="14"
+        stroke-linecap="round" vector-effect="non-scaling-stroke" />
+      <defs>
+        <linearGradient id="cradleGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d8d2c4" />
+          <stop offset="50%" stop-color="#a8a098" />
+          <stop offset="100%" stop-color="#6a635a" />
+        </linearGradient>
+      </defs>
     </svg>
-  </button>
-</div>
+  </div>
 
-<div class="phone">
-  <div class="fixed-disc" id="fixedDisc"></div>
-  <div class="dial" id="dial"></div>
-  <div class="inner-disc"></div>
-  <div class="finger-stop" id="fingerStop"></div>
-  <div class="center-cap"></div>
-</div>
+  <!-- Number label + call button row -->
+  <div class="top-row">
+    <div class="number-label"><span class="text" id="count"></span></div>
+    <button class="call-btn" id="callBtn" disabled aria-label="Chiama">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="currentColor"
+          d="M19.23 15.26l-2.54-.29a1.5 1.5 0 0 0-1.24.43l-1.84 1.84a14.36 14.36 0 0 1-6.29-6.29l1.85-1.85a1.5 1.5 0 0 0 .43-1.24l-.29-2.52A1.5 1.5 0 0 0 7.81 4H5.03c-.87 0-1.6.73-1.54 1.6.45 6.59 5.72 11.85 12.3 12.3.87.06 1.6-.67 1.6-1.54v-2.78a1.5 1.5 0 0 0-1.16-1.32z" />
+      </svg>
+    </button>
+  </div>
 
-<script>
-  // ───────── LAYOUT ─────────
-  // CSS angle convention: 0° = right (3 o'clock), +90° = down (6 o'clock), -90° = up.
-  // Positive angle = clockwise rotation.
-  //
-  // We position elements using top/left as percentage of the phone container.
-  // Center of phone = (50%, 50%). For a point at angle θ and radius r%:
-  //   left = 50% + cos(θ) * r%
-  //   top  = 50% + sin(θ) * r%
+  <div class="phone">
+    <div class="fixed-disc" id="fixedDisc"></div>
+    <div class="dial" id="dial"></div>
+    <div class="inner-disc"></div>
+    <div class="finger-stop" id="fingerStop"></div>
+    <div class="center-cap"></div>
+  </div>
 
-  const PHONE_RADIUS = 50;        // % (full container half-width)
-  const HOLE_RADIUS = 38;         // % from center where holes (and big numbers) sit
-  const STOP_RADIUS = 42;         // % from center where the finger stop sits
+  <script>
+    // ───────── LAYOUT ─────────
+    // CSS angle convention: 0° = right (3 o'clock), +90° = down (6 o'clock), -90° = up.
+    // Positive angle = clockwise rotation.
+    //
+    // We position elements using top/left as percentage of the phone container.
+    // Center of phone = (50%, 50%). For a point at angle θ and radius r%:
+    //   left = 50% + cos(θ) * r%
+    //   top  = 50% + sin(θ) * r%
 
-  // Angular positions for digits (in CSS degrees)
-  // Layout from FATME photo:
-  //   Finger stop is at lower-right (~angle 75°)
-  //   0 sits just counter-clockwise of the stop (angle ~45°, upper-right of stop)
-  //   Going CCW from 0: 9, 8, 7, 6 at left, 5, 4, 3 at top, 2, 1 just before reaching stop again
-  //   1 is closest to the stop in the CW direction (small rotation to reach stop = 1 pulse)
-  //   0 is FARTHEST from the stop in the CW direction (long rotation = 10 pulses)
-  //
-  // Wait — re-thinking. The dial rotates CW. To reach the stop, a hole travels CW from its
-  // rest position to the stop position.
-  //   - 1's rest position is just CCW of the stop → CW journey to stop is SHORT (1 pulse)
-  //   - 0's rest position is just CW of the stop?? But the stop blocks that direction.
-  //
-  // Actually no — the stop blocks CW rotation, so at rest no hole is on the "stopped" side.
-  // All holes are on the CCW side of the stop. The hole closest to the stop (smallest CW
-  // journey) = 1. The hole farthest (largest CW journey, nearly full circle) = 0.
-  //
-  // Looking at photo again: 1 is upper-right, 0 is lower-center. Going CCW from the stop
-  // position (lower-right): first you meet 1 (upper-right) — wait that's CW from stop.
-  // I keep getting confused. Let me just place them as in the photo and compute.
+    const PHONE_RADIUS = 50;        // % (full container half-width)
+    const HOLE_RADIUS = 38;         // % from center where holes (and big numbers) sit
+    const STOP_RADIUS = 42;         // % from center where the finger stop sits
 
-  // From the photo (CSS angle: 0=right, 90=down, -90=up):
-  // Stop is at lower-right, around angle +75°
-  // 1: upper-right, angle ~ -50°  (CCW journey from stop = small; CW journey = large)
-  // 2: top-right, angle ~ -80°
-  // 3: top, angle ~ -110°
-  // 4: upper-left, angle ~ -140°
-  // 5: left, angle ~ -170° (or 190°)
-  // 6: lower-left, angle ~ 200° (or -160°)
-  // 7: bottom-left, angle ~ 165°
-  // 8: bottom, angle ~ 130°
-  // 9: bottom-right, angle ~ 100°
-  // 0: just left of stop, angle ~ 50°
-  //
-  // For the dial to rotate CW until a hole hits the stop, the hole travels from its angle
-  // to the stop angle going CW. CW distance from angle A to STOP = (STOP - A + 360) % 360.
-  //
-  // 1 at -50°: distance = (75 - (-50)) = 125°
-  // 0 at  50°: distance = (75 - 50)   = 25°
-  //
-  // That gives 1 = LONG sweep, 0 = SHORT sweep. OPPOSITE of what we want!
-  //
-  // → The user is right: in the photo, 0 is closest to the stop visually, but on a REAL
-  // rotary phone, 0 produces 10 pulses (longest sweep). So either:
-  //   (a) the photo deceives me and 0 is actually positioned for a long sweep, OR
-  //   (b) the FATME numbering is reversed from American phones, OR
-  //   (c) I'm misreading the photo
-  //
-  // User just told me: "lo 0 è quello che va più lontano". So 0 needs LONG rotation.
-  // I'll flip the layout: place 0 just CCW of the stop position (so it has to travel
-  // almost a full circle CW to reach the stop), and put 1 right before the stop
-  // (small CW journey).
-  //
-  // The visual will look LIKE the photo (numbers around the dial) but with the assignment
-  // such that 0 = long sweep, 1 = short sweep.
+    // Angular positions for digits (in CSS degrees)
+    // Layout from FATME photo:
+    //   Finger stop is at lower-right (~angle 75°)
+    //   0 sits just counter-clockwise of the stop (angle ~45°, upper-right of stop)
+    //   Going CCW from 0: 9, 8, 7, 6 at left, 5, 4, 3 at top, 2, 1 just before reaching stop again
+    //   1 is closest to the stop in the CW direction (small rotation to reach stop = 1 pulse)
+    //   0 is FARTHEST from the stop in the CW direction (long rotation = 10 pulses)
+    //
+    // Wait — re-thinking. The dial rotates CW. To reach the stop, a hole travels CW from its
+    // rest position to the stop position.
+    //   - 1's rest position is just CCW of the stop → CW journey to stop is SHORT (1 pulse)
+    //   - 0's rest position is just CW of the stop?? But the stop blocks that direction.
+    //
+    // Actually no — the stop blocks CW rotation, so at rest no hole is on the "stopped" side.
+    // All holes are on the CCW side of the stop. The hole closest to the stop (smallest CW
+    // journey) = 1. The hole farthest (largest CW journey, nearly full circle) = 0.
+    //
+    // Looking at photo again: 1 is upper-right, 0 is lower-center. Going CCW from the stop
+    // position (lower-right): first you meet 1 (upper-right) — wait that's CW from stop.
+    // I keep getting confused. Let me just place them as in the photo and compute.
 
-  // New layout: angles measured CCW from stop position.
-  // 1 is just CCW of stop (small CW journey back to stop)
-  // 2 is further CCW, etc.
-  // 0 is the FURTHEST CCW (nearly a full loop CW journey back to stop)
+    // From the photo (CSS angle: 0=right, 90=down, -90=up):
+    // Stop is at lower-right, around angle +75°
+    // 1: upper-right, angle ~ -50°  (CCW journey from stop = small; CW journey = large)
+    // 2: top-right, angle ~ -80°
+    // 3: top, angle ~ -110°
+    // 4: upper-left, angle ~ -140°
+    // 5: left, angle ~ -170° (or 190°)
+    // 6: lower-left, angle ~ 200° (or -160°)
+    // 7: bottom-left, angle ~ 165°
+    // 8: bottom, angle ~ 130°
+    // 9: bottom-right, angle ~ 100°
+    // 0: just left of stop, angle ~ 50°
+    //
+    // For the dial to rotate CW until a hole hits the stop, the hole travels from its angle
+    // to the stop angle going CW. CW distance from angle A to STOP = (STOP - A + 360) % 360.
+    //
+    // 1 at -50°: distance = (75 - (-50)) = 125°
+    // 0 at  50°: distance = (75 - 50)   = 25°
+    //
+    // That gives 1 = LONG sweep, 0 = SHORT sweep. OPPOSITE of what we want!
+    //
+    // → The user is right: in the photo, 0 is closest to the stop visually, but on a REAL
+    // rotary phone, 0 produces 10 pulses (longest sweep). So either:
+    //   (a) the photo deceives me and 0 is actually positioned for a long sweep, OR
+    //   (b) the FATME numbering is reversed from American phones, OR
+    //   (c) I'm misreading the photo
+    //
+    // User just told me: "lo 0 è quello che va più lontano". So 0 needs LONG rotation.
+    // I'll flip the layout: place 0 just CCW of the stop position (so it has to travel
+    // almost a full circle CW to reach the stop), and put 1 right before the stop
+    // (small CW journey).
+    //
+    // The visual will look LIKE the photo (numbers around the dial) but with the assignment
+    // such that 0 = long sweep, 1 = short sweep.
 
-  // All 10 numbers distributed uniformly around the dial.
-  // The only "gap" in the ring is at the finger stop position (75°).
-  // 1 sits just CCW of the stop (~45°), 0 sits just CW of the stop (~105°).
-  // Spacing: ~33° between adjacent holes (full circle 360° minus a ~30° gap for the stop, /10).
+    // New layout: angles measured CCW from stop position.
+    // 1 is just CCW of stop (small CW journey back to stop)
+    // 2 is further CCW, etc.
+    // 0 is the FURTHEST CCW (nearly a full loop CW journey back to stop)
 
-  // Layout matching the Italtel/FATME photo:
-  // - Finger stop at lower-right (~5 o'clock, CSS ~60°)
-  // - 1 at upper-right (~2 o'clock, CSS ~-50°)
-  // - 0 just to the left of the stop (~6 o'clock area)
-  // - 10 numbers evenly distributed on a long arc, gap only at the stop
+    // All 10 numbers distributed uniformly around the dial.
+    // The only "gap" in the ring is at the finger stop position (75°).
+    // 1 sits just CCW of the stop (~45°), 0 sits just CW of the stop (~105°).
+    // Spacing: ~33° between adjacent holes (full circle 360° minus a ~30° gap for the stop, /10).
 
-  const STOP_ANGLE = 60;        // finger stop position
-  const FIRST_OFFSET = 110;     // 1 sits 110° CCW from stop (visually high-right)
-  // Total arc from 1 to 0 (going CCW) wraps around almost full circle.
-  // We want a gap of ~30° between 0 and the stop on the other side.
-  // So: FIRST_OFFSET + 9 * SPACING + GAP_END = 360
-  //     110 + 9 * SPACING + 30 = 360  →  SPACING = (360 - 110 - 30) / 9 ≈ 24.4
-  const SPACING = 24;           // tight but fori still don't overlap (min was ~24°)
+    // Layout matching the Italtel/FATME photo:
+    // - Finger stop at lower-right (~5 o'clock, CSS ~60°)
+    // - 1 at upper-right (~2 o'clock, CSS ~-50°)
+    // - 0 just to the left of the stop (~6 o'clock area)
+    // - 10 numbers evenly distributed on a long arc, gap only at the stop
 
-  const digitAngles = {};
-  [1,2,3,4,5,6,7,8,9,0].forEach((d, i) => {
-    digitAngles[d] = STOP_ANGLE - FIRST_OFFSET - i * SPACING;
-  });
-  // 1 →  45°  (lower-right, just above stop)
-  // 2 →  12°
-  // 3 → -21°
-  // 4 → -54°
-  // 5 → -87°  (top)
-  // 6 → -120°
-  // 7 → -153°
-  // 8 → -186° (= 174°, left)
-  // 9 → -219° (= 141°)
-  // 0 → -252° (= 108°, just LEFT of stop)
-  //
-  // Total arc: from 45° going CCW to 108° (= -252°) = 297°.
-  // Gap at stop: 360 - 297 = 63°. Stop sits inside this gap.
+    const STOP_ANGLE = 60;        // finger stop position
+    const FIRST_OFFSET = 110;     // 1 sits 110° CCW from stop (visually high-right)
+    // Total arc from 1 to 0 (going CCW) wraps around almost full circle.
+    // We want a gap of ~30° between 0 and the stop on the other side.
+    // So: FIRST_OFFSET + 9 * SPACING + GAP_END = 360
+    //     110 + 9 * SPACING + 30 = 360  →  SPACING = (360 - 110 - 30) / 9 ≈ 24.4
+    const SPACING = 24;           // tight but fori still don't overlap (min was ~24°)
 
-  const dial = document.getElementById('dial');
-  const fixedDisc = document.getElementById('fixedDisc');
-  const fingerStop = document.getElementById('fingerStop');
-  const countEl = document.getElementById('count');
+    const digitAngles = {};
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].forEach((d, i) => {
+      digitAngles[d] = STOP_ANGLE - FIRST_OFFSET - i * SPACING;
+    });
+    // 1 →  45°  (lower-right, just above stop)
+    // 2 →  12°
+    // 3 → -21°
+    // 4 → -54°
+    // 5 → -87°  (top)
+    // 6 → -120°
+    // 7 → -153°
+    // 8 → -186° (= 174°, left)
+    // 9 → -219° (= 141°)
+    // 0 → -252° (= 108°, just LEFT of stop)
+    //
+    // Total arc: from 45° going CCW to 108° (= -252°) = 297°.
+    // Gap at stop: 360 - 297 = 63°. Stop sits inside this gap.
 
-  function polarToPercent(angleDeg, radiusPct) {
-    const rad = angleDeg * Math.PI / 180;
-    return {
-      left: 50 + Math.cos(rad) * radiusPct,
-      top:  50 + Math.sin(rad) * radiusPct
-    };
-  }
+    const dial = document.getElementById('dial');
+    const fixedDisc = document.getElementById('fixedDisc');
+    const fingerStop = document.getElementById('fingerStop');
+    const countEl = document.getElementById('count');
 
-  // Place finger stop
-  {
-    const p = polarToPercent(STOP_ANGLE, STOP_RADIUS);
-    fingerStop.style.left = p.left + '%';
-    fingerStop.style.top  = p.top  + '%';
-    // rotate stop so its long axis points toward center
-    fingerStop.style.transform = `rotate(${STOP_ANGLE + 90}deg)`;
-    // Note: this overrides the margin-centering. Let me handle that differently.
-  }
-  // Recompute: keep margin centering, but apply rotation via additional transform
-  fingerStop.style.transformOrigin = 'center center';
-  // We need to combine the margin trick with rotation. The margin: -20px 0 0 -8px shifts
-  // the element so the (left, top) point is its center. Then transform rotates around its center.
-  // That should still work because transform doesn't affect the layout.
+    function polarToPercent(angleDeg, radiusPct) {
+      const rad = angleDeg * Math.PI / 180;
+      return {
+        left: 50 + Math.cos(rad) * radiusPct,
+        top: 50 + Math.sin(rad) * radiusPct
+      };
+    }
 
-  // Place BIG numbers on the FIXED disc (they don't rotate)
-  Object.entries(digitAngles).forEach(([digitStr, angle]) => {
-    const digit = parseInt(digitStr, 10);
-    const p = polarToPercent(angle, HOLE_RADIUS);
-    const num = document.createElement('div');
-    num.className = 'big-num';
-    num.textContent = digit;
-    num.style.left = p.left + '%';
-    num.style.top  = p.top  + '%';
-    fixedDisc.appendChild(num);
-  });
+    // Place finger stop
+    {
+      const p = polarToPercent(STOP_ANGLE, STOP_RADIUS);
+      fingerStop.style.left = p.left + '%';
+      fingerStop.style.top = p.top + '%';
+      // rotate stop so its long axis points toward center
+      fingerStop.style.transform = `rotate(${STOP_ANGLE + 90}deg)`;
+      // Note: this overrides the margin-centering. Let me handle that differently.
+    }
+    // Recompute: keep margin centering, but apply rotation via additional transform
+    fingerStop.style.transformOrigin = 'center center';
+    // We need to combine the margin trick with rotation. The margin: -20px 0 0 -8px shifts
+    // the element so the (left, top) point is its center. Then transform rotates around its center.
+    // That should still work because transform doesn't affect the layout.
 
-  // Place HOLES on the rotating dial (transparent cutouts, no text)
-  const holePositions = [];
-  Object.entries(digitAngles).forEach(([digitStr, angle]) => {
-    const digit = parseInt(digitStr, 10);
-    const p = polarToPercent(angle, HOLE_RADIUS);
-    const hole = document.createElement('div');
-    hole.className = 'hole';
-    hole.dataset.digit = digit;
-    hole.style.left = p.left + '%';
-    hole.style.top  = p.top  + '%';
-    dial.appendChild(hole);
-    holePositions.push({ x: p.left, y: p.top });
-  });
+    // Place BIG numbers on the FIXED disc (they don't rotate)
+    Object.entries(digitAngles).forEach(([digitStr, angle]) => {
+      const digit = parseInt(digitStr, 10);
+      const p = polarToPercent(angle, HOLE_RADIUS);
+      const num = document.createElement('div');
+      num.className = 'big-num';
+      num.textContent = digit;
+      num.style.left = p.left + '%';
+      num.style.top = p.top + '%';
+      fixedDisc.appendChild(num);
+    });
 
-  // SUB-STEP 1b: SVG with beige fill OUTSIDE the holes, transparent INSIDE.
-  // Technique: a single <path> using fill-rule="evenodd".
-  //   - Big rectangle covering the whole viewBox (filled = beige)
-  //   - 10 circles inside (each toggles the fill off because of evenodd)
-  // Result: beige fills the rectangle EXCEPT inside the circles, where it's transparent.
-  const HOLE_RADIUS_PCT = 6.1;
-  const BEIGE = '#d4c8b0';
+    // Place HOLES on the rotating dial (transparent cutouts, no text)
+    const holePositions = [];
+    Object.entries(digitAngles).forEach(([digitStr, angle]) => {
+      const digit = parseInt(digitStr, 10);
+      const p = polarToPercent(angle, HOLE_RADIUS);
+      const hole = document.createElement('div');
+      hole.className = 'hole';
+      hole.dataset.digit = digit;
+      hole.style.left = p.left + '%';
+      hole.style.top = p.top + '%';
+      dial.appendChild(hole);
+      holePositions.push({ x: p.left, y: p.top });
+    });
 
-  // Build a path string: rectangle + circles. SVG path syntax for a circle:
-  //   M cx-r,cy   a r,r 0 1,0 (2r),0   a r,r 0 1,0 -(2r),0   z
-  function circlePath(cx, cy, r) {
-    return `M ${cx - r},${cy} a ${r},${r} 0 1,0 ${2*r},0 a ${r},${r} 0 1,0 ${-2*r},0 z`;
-  }
+    // SUB-STEP 1b: SVG with beige fill OUTSIDE the holes, transparent INSIDE.
+    // Technique: a single <path> using fill-rule="evenodd".
+    //   - Big rectangle covering the whole viewBox (filled = beige)
+    //   - 10 circles inside (each toggles the fill off because of evenodd)
+    // Result: beige fills the rectangle EXCEPT inside the circles, where it's transparent.
+    const HOLE_RADIUS_PCT = 6.1;
+    const BEIGE = '#d4c8b0';
 
-  const rectPath = `M 0,0 H 100 V 100 H 0 Z`;
-  const circlePaths = holePositions
-    .map(h => circlePath(h.x, h.y, HOLE_RADIUS_PCT))
-    .join(' ');
-  const fullPath = `${rectPath} ${circlePaths}`;
+    // Build a path string: rectangle + circles. SVG path syntax for a circle:
+    //   M cx-r,cy   a r,r 0 1,0 (2r),0   a r,r 0 1,0 -(2r),0   z
+    function circlePath(cx, cy, r) {
+      return `M ${cx - r},${cy} a ${r},${r} 0 1,0 ${2 * r},0 a ${r},${r} 0 1,0 ${-2 * r},0 z`;
+    }
 
-  const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+    const rectPath = `M 0,0 H 100 V 100 H 0 Z`;
+    const circlePaths = holePositions
+      .map(h => circlePath(h.x, h.y, HOLE_RADIUS_PCT))
+      .join(' ');
+    const fullPath = `${rectPath} ${circlePaths}`;
+
+    const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
     <path d="${fullPath}" fill="${BEIGE}" fill-rule="evenodd"/>
   </svg>`;
-  dial.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodeURIComponent(svgString)}")`;
-  dial.style.backgroundSize = '100% 100%';
-  dial.style.backgroundRepeat = 'no-repeat';
+    dial.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodeURIComponent(svgString)}")`;
+    dial.style.backgroundSize = '100% 100%';
+    dial.style.backgroundRepeat = 'no-repeat';
 
-  // ───────── AUDIO ─────────
-  // We synthesize the metallic ratchet of a rotary dial as a stream of
-  // short, resonant clicks. Each click = a tiny noise burst through a
-  // resonant bandpass filter, giving it a "ting" metallic quality.
-  // The click RATE varies with rotation speed (more clicks/sec = faster rrrrr).
+    // ───────── AUDIO ─────────
+    // We synthesize the metallic ratchet of a rotary dial as a stream of
+    // short, resonant clicks. Each click = a tiny noise burst through a
+    // resonant bandpass filter, giving it a "ting" metallic quality.
+    // The click RATE varies with rotation speed (more clicks/sec = faster rrrrr).
 
-  let audioCtx = null;
-  let masterGain = null;
-  let isPlaying = false;
-  let nextClickTime = 0;          // when to schedule the next click (audio clock)
-  let currentClickRate = 0;       // clicks per second
-  let schedulerHandle = null;
+    let audioCtx = null;
+    let masterGain = null;
+    let isPlaying = false;
+    let nextClickTime = 0;          // when to schedule the next click (audio clock)
+    let currentClickRate = 0;       // clicks per second
+    let schedulerHandle = null;
 
-  function ensureAudio() {
-    if (audioCtx) {
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      return;
-    }
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    masterGain = audioCtx.createGain();
-    masterGain.gain.value = 0.5;
-    masterGain.connect(audioCtx.destination);
-  }
-
-  // Produce a single metallic click. Combination of:
-  //   (1) sharp noise transient with a bandpass around 3-8kHz → the "scrape/clank"
-  //   (2) multiple parallel resonant filters at inharmonic frequencies → metallic ring
-  //   (3) longer ring decay so the metal "vibrates"
-  function scheduleClick(when, velocity = 1) {
-    const ctx = audioCtx;
-    if (!ctx) return;
-
-    // Longer, harsher noise burst (8ms) — gives "graffio" character
-    const len = Math.floor(ctx.sampleRate * 0.008);
-    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
-    const data = buf.getChannelData(0);
-    for (let i = 0; i < len; i++) {
-      data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (len * 0.5));
-    }
-    const src = ctx.createBufferSource();
-    src.buffer = buf;
-
-    // === (1) The harsh transient: broadband noise highpassed ===
-    const transientHP = ctx.createBiquadFilter();
-    transientHP.type = 'highpass';
-    transientHP.frequency.value = 5500;
-    const transientLP = ctx.createBiquadFilter();
-    transientLP.type = 'lowpass';
-    transientLP.frequency.value = 14000;
-    const transientEnv = ctx.createGain();
-    transientEnv.gain.setValueAtTime(0, when);
-    transientEnv.gain.linearRampToValueAtTime(1.6 * velocity, when + 0.0005);
-    transientEnv.gain.exponentialRampToValueAtTime(0.001, when + 0.025);
-
-    // === (2) Multiple inharmonic resonances (the "metallic" character) ===
-    // Slight randomization keeps it from sounding identical each click.
-    const baseFreq = 8500 + (Math.random() - 0.5) * 500;
-    const ratios = [1.0, 1.78, 2.41, 3.13];  // inharmonic = bell/metal-like
-    const amps   = [0.10, 0.07, 0.05, 0.03];   // very quiet — transient dominates
-    const decays = [0.18, 0.14, 0.10, 0.07];
-
-    const resonatorNodes = ratios.map((r, i) => {
-      const bp = ctx.createBiquadFilter();
-      bp.type = 'bandpass';
-      bp.frequency.value = baseFreq * r;
-      bp.Q.value = 40;
-      const env = ctx.createGain();
-      env.gain.setValueAtTime(0, when);
-      env.gain.linearRampToValueAtTime(amps[i] * velocity, when + 0.0008);
-      env.gain.exponentialRampToValueAtTime(0.0005, when + decays[i]);
-      return { bp, env };
-    });
-
-    // Final highpass to remove any low-frequency mud
-    const masterHP = ctx.createBiquadFilter();
-    masterHP.type = 'highpass';
-    masterHP.frequency.value = 2000;
-
-    // Wire transient path
-    src.connect(transientHP);
-    transientHP.connect(transientLP);
-    transientLP.connect(transientEnv);
-    transientEnv.connect(masterHP);
-
-    // Wire resonator paths in parallel
-    resonatorNodes.forEach(({ bp, env }) => {
-      src.connect(bp);
-      bp.connect(env);
-      env.connect(masterHP);
-    });
-
-    masterHP.connect(masterGain);
-
-    src.start(when);
-    src.stop(when + 0.2);
-  }
-
-  // Look-ahead scheduler: every ~25ms, schedule any clicks needed in next 100ms
-  function scheduler() {
-    if (!isPlaying) return;
-    const lookAhead = 0.1;  // schedule 100ms ahead
-    const now = audioCtx.currentTime;
-
-    if (currentClickRate > 0.5) {
-      const interval = 1 / currentClickRate;
-      // If we're behind, catch up; if too far ahead, wait
-      if (nextClickTime < now) nextClickTime = now + 0.005;
-      while (nextClickTime < now + lookAhead) {
-        scheduleClick(nextClickTime, 1);
-        nextClickTime += interval;
+    function ensureAudio() {
+      if (audioCtx) {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        return;
       }
-    } else {
-      // Below threshold: no clicks, just keep nextClickTime synced
-      nextClickTime = now;
-    }
-    schedulerHandle = setTimeout(scheduler, 25);
-  }
-
-  const DEG_PER_CLICK = 16;
-  function speedToClickRate(degPerSec) {
-    return Math.max(0, Math.abs(degPerSec) / DEG_PER_CLICK);
-  }
-
-  function setRatchetSpeed(clickRate) {
-    currentClickRate = clickRate;
-  }
-
-  function startRatchet() {
-    ensureAudio();
-    if (isPlaying) return;
-    isPlaying = true;
-    nextClickTime = audioCtx.currentTime;
-    scheduler();
-  }
-
-  function stopRatchet() {
-    isPlaying = false;
-    currentClickRate = 0;
-    if (schedulerHandle) {
-      clearTimeout(schedulerHandle);
-      schedulerHandle = null;
-    }
-  }
-
-  // ───────── MECHANICS (only the 0 is interactive) ─────────
-
-  // ───────── MECHANICS ─────────
-
-  // Function: given a digit's rest angle, return the CW rotation needed to bring it to the stop
-  function rotationLimitFor(digit) {
-    const restAngle = digitAngles[digit];
-    const max = ((STOP_ANGLE - restAngle) % 360 + 360) % 360;
-    return max - 6;  // small buffer so hole edge meets stop edge cleanly
-  }
-
-  let composedNumber = '';
-  let isDragging = false;
-  let isReturning = false;
-  let currentRotation = 0;
-  let lastPointerAngle = 0;
-  let activeDigit = null;       // which digit is currently being dialed
-  let activeLimit = 0;          // rotation limit for that digit
-
-  // Velocity tracking for audio: time of last pointermove
-  let lastMoveTime = 0;
-  let lastRotation = 0;
-  // Decay timer: if pointer is still (no move) for a while, reduce click rate to 0
-  let stillCheckTimer = null;
-
-  function getPointerAngle(e) {
-    const rect = dial.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const px = e.clientX;
-    const py = e.clientY;
-    return Math.atan2(py - cy, px - cx) * 180 / Math.PI;
-  }
-
-  function setRotation(deg) {
-    currentRotation = deg;
-    dial.style.transform = `rotate(${deg}deg)`;
-  }
-
-  function springBack(register) {
-    isReturning = true;
-    isDragging = false;
-    dial.classList.add('returning');
-
-    // The spring return takes ~0.7s for any rotation amount (CSS transition).
-    // So angular speed during return ≈ currentRotation / 0.7  (degrees/sec)
-    // We map that to a click rate. Slow at the end (cubic-bezier easing)
-    // but for the audio we use a constant-ish rate that decays slightly.
-    const returnDurationMs = 700;
-    const avgSpeed = (currentRotation / (returnDurationMs / 1000));  // deg/sec
-    const initialRate = speedToClickRate(avgSpeed);
-
-    // Start the ratchet for the spring return
-    startRatchet(0.22);  // slightly louder than drag — the spring is mechanical & noisy
-    setRatchetSpeed(initialRate);
-
-    // Make the click rate decay along the easing curve (slow down near the end)
-    const startTime = performance.now();
-    function rampDown() {
-      if (!isReturning) return;
-      const t = (performance.now() - startTime) / returnDurationMs;
-      if (t >= 1) { stopRatchet(); return; }
-      // Match the cubic-bezier(0.4, 0, 0.2, 1) — fast start, slow end.
-      // Approximation: speed ≈ initialRate * (1 - t^1.5)
-      const rate = initialRate * Math.max(0, 1 - Math.pow(t, 1.3));
-      setRatchetSpeed(rate);
-      requestAnimationFrame(rampDown);
-    }
-    requestAnimationFrame(rampDown);
-
-    setRotation(0);
-    if (register && activeDigit !== null) {
-      composedNumber += activeDigit.toString();
-      updateNumberDisplay();
-    }
-    setTimeout(() => {
-      isReturning = false;
-      dial.classList.remove('returning');
-      activeDigit = null;
-      stopRatchet();
-    }, 720);
-  }
-
-  function updateNumberDisplay() {
-    countEl.textContent = composedNumber;
-    // Enable call button only with 3+ digits
-    callBtn.disabled = composedNumber.length < 3;
-  }
-
-  function onPointerDown(e) {
-    if (isReturning) return;
-    const target = e.target.closest('.hole');
-    if (!target) return;
-    e.preventDefault();
-    activeDigit = parseInt(target.dataset.digit, 10);
-    activeLimit = rotationLimitFor(activeDigit);
-    isDragging = true;
-    lastPointerAngle = getPointerAngle(e);
-    lastMoveTime = performance.now();
-    lastRotation = currentRotation;
-    startRatchet(0.15);
-    setRatchetSpeed(0);  // silent until the user actually moves
-  }
-
-  function onPointerMove(e) {
-    if (!isDragging || isReturning) return;
-    e.preventDefault();
-
-    const currentPointerAngle = getPointerAngle(e);
-    let delta = currentPointerAngle - lastPointerAngle;
-    while (delta > 180) delta -= 360;
-    while (delta < -180) delta += 360;
-    lastPointerAngle = currentPointerAngle;
-
-    let rotation = currentRotation + delta;
-    if (rotation < 0) rotation = 0;
-
-    // Compute angular speed from rotation delta and time
-    const now = performance.now();
-    const dt = Math.max(1, now - lastMoveTime);  // ms, avoid div by 0
-    const dRot = rotation - lastRotation;
-    const speed = (Math.abs(dRot) / dt) * 1000;  // deg/sec
-    lastMoveTime = now;
-    lastRotation = rotation;
-    setRatchetSpeed(speedToClickRate(speed));
-
-    // Schedule a "go silent if no more movement" check
-    clearTimeout(stillCheckTimer);
-    stillCheckTimer = setTimeout(() => {
-      if (isDragging) setRatchetSpeed(0);
-    }, 80);
-
-    if (rotation >= activeLimit) {
-      setRotation(activeLimit);
-      springBack(true);
-      return;
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = 0.5;
+      masterGain.connect(audioCtx.destination);
     }
 
-    setRotation(rotation);
-  }
+    // Produce a single metallic click. Combination of:
+    //   (1) sharp noise transient with a bandpass around 3-8kHz → the "scrape/clank"
+    //   (2) multiple parallel resonant filters at inharmonic frequencies → metallic ring
+    //   (3) longer ring decay so the metal "vibrates"
+    function scheduleClick(when, velocity = 1) {
+      const ctx = audioCtx;
+      if (!ctx) return;
 
-  function onPointerUp() {
-    if (!isDragging || isReturning) return;
-    clearTimeout(stillCheckTimer);
-    springBack(false);
-  }
+      // Longer, harsher noise burst (8ms) — gives "graffio" character
+      const len = Math.floor(ctx.sampleRate * 0.008);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (len * 0.5));
+      }
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
 
-  dial.addEventListener('pointerdown', onPointerDown);
-  window.addEventListener('pointermove', onPointerMove);
-  window.addEventListener('pointerup', onPointerUp);
-  window.addEventListener('pointercancel', onPointerUp);
+      // === (1) The harsh transient: broadband noise highpassed ===
+      const transientHP = ctx.createBiquadFilter();
+      transientHP.type = 'highpass';
+      transientHP.frequency.value = 5500;
+      const transientLP = ctx.createBiquadFilter();
+      transientLP.type = 'lowpass';
+      transientLP.frequency.value = 14000;
+      const transientEnv = ctx.createGain();
+      transientEnv.gain.setValueAtTime(0, when);
+      transientEnv.gain.linearRampToValueAtTime(1.6 * velocity, when + 0.0005);
+      transientEnv.gain.exponentialRampToValueAtTime(0.001, when + 0.025);
 
-  // ───────── CRADLE (hook switch) — clears the number ─────────
-  const cradle = document.getElementById('cradle');
-  cradle.addEventListener('pointerdown', (e) => {
-    e.preventDefault();
-    cradle.classList.add('pressed');
-    composedNumber = '';
-    updateNumberDisplay();
-    // Mechanical "clack" — one sharp click via the same audio engine
-    ensureAudio();
-    if (audioCtx) scheduleClick(audioCtx.currentTime + 0.005, 1.4);
-  });
-  cradle.addEventListener('pointerup',   () => cradle.classList.remove('pressed'));
-  cradle.addEventListener('pointerleave',() => cradle.classList.remove('pressed'));
-  cradle.addEventListener('pointercancel',() => cradle.classList.remove('pressed'));
+      // === (2) Multiple inharmonic resonances (the "metallic" character) ===
+      // Slight randomization keeps it from sounding identical each click.
+      const baseFreq = 8500 + (Math.random() - 0.5) * 500;
+      const ratios = [1.0, 1.78, 2.41, 3.13];  // inharmonic = bell/metal-like
+      const amps = [0.10, 0.07, 0.05, 0.03];   // very quiet — transient dominates
+      const decays = [0.18, 0.14, 0.10, 0.07];
 
-  // ───────── CALL BUTTON ─────────
-  const callBtn = document.getElementById('callBtn');
-  callBtn.addEventListener('click', () => {
-    if (composedNumber.length < 3) return;
-    window.location.href = 'tel:' + composedNumber;
-  });
-
-  // Initial display state
-  updateNumberDisplay();
-
-  // ───────── PWA SERVICE WORKER ─────────
-  // Registers ./sw.js (must be in the same folder as this HTML when hosted).
-  // The SW caches the page so it works offline once installed to home screen.
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js').catch(() => {
-        // Silent fail — app still works without offline support
+      const resonatorNodes = ratios.map((r, i) => {
+        const bp = ctx.createBiquadFilter();
+        bp.type = 'bandpass';
+        bp.frequency.value = baseFreq * r;
+        bp.Q.value = 40;
+        const env = ctx.createGain();
+        env.gain.setValueAtTime(0, when);
+        env.gain.linearRampToValueAtTime(amps[i] * velocity, when + 0.0008);
+        env.gain.exponentialRampToValueAtTime(0.0005, when + decays[i]);
+        return { bp, env };
       });
+
+      // Final highpass to remove any low-frequency mud
+      const masterHP = ctx.createBiquadFilter();
+      masterHP.type = 'highpass';
+      masterHP.frequency.value = 2000;
+
+      // Wire transient path
+      src.connect(transientHP);
+      transientHP.connect(transientLP);
+      transientLP.connect(transientEnv);
+      transientEnv.connect(masterHP);
+
+      // Wire resonator paths in parallel
+      resonatorNodes.forEach(({ bp, env }) => {
+        src.connect(bp);
+        bp.connect(env);
+        env.connect(masterHP);
+      });
+
+      masterHP.connect(masterGain);
+
+      src.start(when);
+      src.stop(when + 0.2);
+    }
+
+    // Look-ahead scheduler: every ~25ms, schedule any clicks needed in next 100ms
+    function scheduler() {
+      if (!isPlaying) return;
+      const lookAhead = 0.1;  // schedule 100ms ahead
+      const now = audioCtx.currentTime;
+
+      if (currentClickRate > 0.5) {
+        const interval = 1 / currentClickRate;
+        // If we're behind, catch up; if too far ahead, wait
+        if (nextClickTime < now) nextClickTime = now + 0.005;
+        while (nextClickTime < now + lookAhead) {
+          scheduleClick(nextClickTime, 1);
+          nextClickTime += interval;
+        }
+      } else {
+        // Below threshold: no clicks, just keep nextClickTime synced
+        nextClickTime = now;
+      }
+      schedulerHandle = setTimeout(scheduler, 25);
+    }
+
+    const DEG_PER_CLICK = 16;
+    function speedToClickRate(degPerSec) {
+      return Math.max(0, Math.abs(degPerSec) / DEG_PER_CLICK);
+    }
+
+    function setRatchetSpeed(clickRate) {
+      currentClickRate = clickRate;
+    }
+
+    function startRatchet() {
+      ensureAudio();
+      if (isPlaying) return;
+      isPlaying = true;
+      nextClickTime = audioCtx.currentTime;
+      scheduler();
+    }
+
+    function stopRatchet() {
+      isPlaying = false;
+      currentClickRate = 0;
+      if (schedulerHandle) {
+        clearTimeout(schedulerHandle);
+        schedulerHandle = null;
+      }
+    }
+
+    // ───────── MECHANICS (only the 0 is interactive) ─────────
+
+    // ───────── MECHANICS ─────────
+
+    // Function: given a digit's rest angle, return the CW rotation needed to bring it to the stop
+    function rotationLimitFor(digit) {
+      const restAngle = digitAngles[digit];
+      const max = ((STOP_ANGLE - restAngle) % 360 + 360) % 360;
+      return max - 6;  // small buffer so hole edge meets stop edge cleanly
+    }
+
+    let composedNumber = '';
+    let isDragging = false;
+    let isReturning = false;
+    let currentRotation = 0;
+    let lastPointerAngle = 0;
+    let activeDigit = null;       // which digit is currently being dialed
+    let activeLimit = 0;          // rotation limit for that digit
+
+    // Velocity tracking for audio: time of last pointermove
+    let lastMoveTime = 0;
+    let lastRotation = 0;
+    // Decay timer: if pointer is still (no move) for a while, reduce click rate to 0
+    let stillCheckTimer = null;
+
+    function getPointerAngle(e) {
+      const rect = dial.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const px = e.clientX;
+      const py = e.clientY;
+      return Math.atan2(py - cy, px - cx) * 180 / Math.PI;
+    }
+
+    function setRotation(deg) {
+      currentRotation = deg;
+      dial.style.transform = `rotate(${deg}deg)`;
+    }
+
+    function springBack(register) {
+      isReturning = true;
+      isDragging = false;
+      dial.classList.add('returning');
+
+      // The spring return takes ~0.7s for any rotation amount (CSS transition).
+      // So angular speed during return ≈ currentRotation / 0.7  (degrees/sec)
+      // We map that to a click rate. Slow at the end (cubic-bezier easing)
+      // but for the audio we use a constant-ish rate that decays slightly.
+      const returnDurationMs = 700;
+      const avgSpeed = (currentRotation / (returnDurationMs / 1000));  // deg/sec
+      const initialRate = speedToClickRate(avgSpeed);
+
+      // Start the ratchet for the spring return
+      startRatchet(0.22);  // slightly louder than drag — the spring is mechanical & noisy
+      setRatchetSpeed(initialRate);
+
+      // Make the click rate decay along the easing curve (slow down near the end)
+      const startTime = performance.now();
+      function rampDown() {
+        if (!isReturning) return;
+        const t = (performance.now() - startTime) / returnDurationMs;
+        if (t >= 1) { stopRatchet(); return; }
+        // Match the cubic-bezier(0.4, 0, 0.2, 1) — fast start, slow end.
+        // Approximation: speed ≈ initialRate * (1 - t^1.5)
+        const rate = initialRate * Math.max(0, 1 - Math.pow(t, 1.3));
+        setRatchetSpeed(rate);
+        requestAnimationFrame(rampDown);
+      }
+      requestAnimationFrame(rampDown);
+
+      setRotation(0);
+      if (register && activeDigit !== null) {
+        composedNumber += activeDigit.toString();
+        updateNumberDisplay();
+      }
+      setTimeout(() => {
+        isReturning = false;
+        dial.classList.remove('returning');
+        activeDigit = null;
+        stopRatchet();
+      }, 720);
+    }
+
+    function updateNumberDisplay() {
+      countEl.textContent = composedNumber;
+      // Enable call button only with 3+ digits
+      callBtn.disabled = composedNumber.length < 3;
+    }
+
+    function onPointerDown(e) {
+      if (isReturning) return;
+      const target = e.target.closest('.hole');
+      if (!target) return;
+      e.preventDefault();
+      activeDigit = parseInt(target.dataset.digit, 10);
+      activeLimit = rotationLimitFor(activeDigit);
+      isDragging = true;
+      lastPointerAngle = getPointerAngle(e);
+      lastMoveTime = performance.now();
+      lastRotation = currentRotation;
+      startRatchet(0.15);
+      setRatchetSpeed(0);  // silent until the user actually moves
+    }
+
+    function onPointerMove(e) {
+      if (!isDragging || isReturning) return;
+      e.preventDefault();
+
+      const currentPointerAngle = getPointerAngle(e);
+      let delta = currentPointerAngle - lastPointerAngle;
+      while (delta > 180) delta -= 360;
+      while (delta < -180) delta += 360;
+      lastPointerAngle = currentPointerAngle;
+
+      let rotation = currentRotation + delta;
+      if (rotation < 0) rotation = 0;
+
+      // Compute angular speed from rotation delta and time
+      const now = performance.now();
+      const dt = Math.max(1, now - lastMoveTime);  // ms, avoid div by 0
+      const dRot = rotation - lastRotation;
+      const speed = (Math.abs(dRot) / dt) * 1000;  // deg/sec
+      lastMoveTime = now;
+      lastRotation = rotation;
+      setRatchetSpeed(speedToClickRate(speed));
+
+      // Schedule a "go silent if no more movement" check
+      clearTimeout(stillCheckTimer);
+      stillCheckTimer = setTimeout(() => {
+        if (isDragging) setRatchetSpeed(0);
+      }, 80);
+
+      if (rotation >= activeLimit) {
+        setRotation(activeLimit);
+        springBack(true);
+        return;
+      }
+
+      setRotation(rotation);
+    }
+
+    function onPointerUp() {
+      if (!isDragging || isReturning) return;
+      clearTimeout(stillCheckTimer);
+      springBack(false);
+    }
+
+    dial.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointercancel', onPointerUp);
+
+    // ───────── CRADLE (hook switch) — clears the number ─────────
+    const cradle = document.getElementById('cradle');
+    cradle.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      cradle.classList.add('pressed');
+      composedNumber = '';
+      updateNumberDisplay();
+      // Mechanical "clack" — one sharp click via the same audio engine
+      ensureAudio();
+      if (audioCtx) scheduleClick(audioCtx.currentTime + 0.005, 1.4);
     });
-  }
-</script>
+    cradle.addEventListener('pointerup', () => cradle.classList.remove('pressed'));
+    cradle.addEventListener('pointerleave', () => cradle.classList.remove('pressed'));
+    cradle.addEventListener('pointercancel', () => cradle.classList.remove('pressed'));
+
+    // ───────── CALL BUTTON ─────────
+    const callBtn = document.getElementById('callBtn');
+    callBtn.addEventListener('click', () => {
+      if (composedNumber.length < 3) return;
+      window.location.href = 'tel:' + composedNumber;
+    });
+
+    // Initial display state
+    updateNumberDisplay();
+
+    // ───────── PWA SERVICE WORKER ─────────
+    // Registers ./sw.js (must be in the same folder as this HTML when hosted).
+    // The SW caches the page so it works offline once installed to home screen.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {
+          // Silent fail — app still works without offline support
+        });
+      });
+    }
+  </script>
 
 </body>
+
 </html>
