@@ -1,8 +1,16 @@
 // Nostalgia Phone — Service Worker
 // Caches the app shell so it works offline once installed.
 
-const CACHE_NAME = 'nostalgia-phone-v3';
-const APP_SHELL = ['./', './index.html'];
+const CACHE_NAME = 'nostalgia-phone-v4';
+const APP_SHELL = [
+  './',
+  './index.html',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png',
+  './icon-512-maskable.png',
+  './apple-touch-icon.png'
+];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

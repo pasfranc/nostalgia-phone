@@ -1,31 +1,55 @@
-# Nostalgia Phone - Deploy
+# Nostalgia Phone
 
-## Cosa contiene
-- `index.html` - l'app (HTML + CSS + JS, tutto inline)
-- `sw.js` - service worker per supporto offline
-- Manifest e icone sono inline nell'HTML
+Web app vintage del telefono FATME a disco. Installabile come PWA su iPhone e Android.
 
-## Deploy su Netlify (più veloce, gratis, 2 minuti)
+## File del progetto
 
-1. Vai su https://app.netlify.com/drop (anche senza account)
-2. Trascina la cartella che contiene `index.html` e `sw.js` (NON solo i file singoli - proprio la cartella)
-3. Netlify ti dà un URL tipo `https://random-name-12345.netlify.app`
-4. Da "Site settings" → "Change site name" puoi cambiarlo in `nostalgiaphone` se è libero, sennò aggiungi un suffisso come `nostalgia-phone-pako`
+- `index.html` - l'app
+- `sw.js` - service worker (offline)
+- `manifest.json` - PWA manifest
+- `icon-192.png`, `icon-512.png` - icone PWA
+- `icon-512-maskable.png` - icona maskable per Android
+- `apple-touch-icon.png` - icona per iOS home screen
 
-L'HTTPS è automatico, le PWA possono essere installate.
+**Tutti i file devono stare nella stessa cartella, nel root del sito.**
 
-## Test PWA su iPhone
-1. Apri l'URL in Safari (non Chrome - su iOS solo Safari supporta installazione PWA)
-2. Tocca il bottone Share (quadrato con freccia)
-3. Scorri in basso e tocca "Aggiungi alla schermata Home"
-4. Conferma - appare un'icona sull'home screen
-5. Da quel momento si apre come app fullscreen, senza barra Safari
+## Deploy su GitHub Pages
 
-## Test PWA su Android
-1. Apri l'URL in Chrome
-2. Dovrebbe apparire un prompt "Installa app" in basso, oppure menu → "Aggiungi alla schermata Home"
+```bash
+git add .
+git commit -m "PWA: manifest + icone esterne"
+git push
+```
 
-## Modifiche future
-Per aggiornare l'app dopo il deploy: ri-trascina la cartella su Netlify Drop (stesso sito), oppure collega un repo GitHub al sito per auto-deploy.
+Aspetta 30-60 secondi, ricarica https://pasfranc.github.io/nostalgia-phone/
 
-Quando aggiorni `index.html`, **cambia anche `CACHE_NAME` in `sw.js`** (es. da `nostalgia-phone-v1` a `v2`) altrimenti gli utenti vedranno la versione cached vecchia per giorni.
+## Come installare l'app
+
+### Android (Chrome)
+1. Apri il sito in Chrome
+2. Dopo qualche secondo appare un prompt in basso: "Aggiungi a schermata Home"
+3. Se non appare: menu ⋮ -> "Aggiungi a schermata Home" / "Installa app"
+
+### iPhone (Safari)
+Non esiste prompt automatico, Apple non lo permette. Devi:
+1. Apri in **Safari** (non Chrome)
+2. Tocca Share (quadrato con freccia in basso)
+3. Scorri giù -> "Aggiungi alla schermata Home"
+4. Conferma
+
+### Desktop (Chrome, Edge)
+- Icona + nella barra URL, oppure menu -> "Installa Nostalgia Phone"
+
+## Aggiornamenti
+
+Quando modifichi index.html:
+1. Cambia anche CACHE_NAME in sw.js (es. v4 -> v5)
+2. Commit + push
+
+Senza bump del cache name gli utenti vedono la versione vecchia per giorni.
+
+## Note
+
+- Audio: serve interruttore Silent OFF su iPhone
+- Chiamata: il bottone verde apre tel:numero, il sistema chiede conferma
+- Prefisso internazionale: usa 00 (es. 0049 per Germania)
